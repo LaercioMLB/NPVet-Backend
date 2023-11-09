@@ -1,0 +1,42 @@
+name: Node.js CI
+
+on:
+  push:
+    branches:
+      - main
+env:
+  AWS_AKI: ${{secrets.AWS_ACCESS_KEY_ID}}
+  AWS_SAK: ${{secrets.AWS_SECRET_ACCESS_KEY}}
+  AWS_ST: ${{secrets.AWS_SESSION_TOKEN}}
+  AWS_R: us-east-1
+  AWS_U_ECR: 646838487189.dkr.ecr.us-east-1.amazonaws.com
+
+jobs:
+  build_docker_images:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout código
+      uses: actions/checkout@v2
+      
+    - name: Configure AWS credentials for kubectl
+      run: aws configure set aws_access_key_id $AWS_AKI && aws configure set aws_secret_access_key $AWS_SAK && aws configure set aws_session_token $AWS_ST && aws configure set region $AWS_R
+    
+    - name: Configure AWS credentials for kubectl        
+      run: aws ecr get-login-password --region $AWS_R | docker login --username AWS --password-stdin $AWS_U_ECR
+    
+    - name: Build e Push da imagem Docker do frontend
+      run: |
+        docker build -t npvet-backend . &&
+        docker tag npvet-backend:latest $AWS_U_ECR/npvet-backend:latest &&
+        docker push $AWS_U_ECR/npvet-backend:latest
+
+#    - name: Deploy kubernetes
+#      working-directory: ./
+#      run: |
+#        aws eks update-kubeconfig --name aplication-web &&
+#        kubectl apply -f k8s/
+    
+
+
+      
