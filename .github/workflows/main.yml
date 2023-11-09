@@ -5,9 +5,9 @@ on:
     branches:
       - main
 env:
-  AWS_AKI: ${{secrets.AWS_ACCESS_KEY_ID}}
-  AWS_SAK: ${{secrets.AWS_SECRET_ACCESS_KEY}}
-  AWS_ST: ${{secrets.AWS_SESSION_TOKEN}}
+  AWS_AKI: ASIAZNGUUBCK2VEWS2FZ
+  AWS_SAK: lctup4iV9ITsFLPoRWrrQtANjIgMEdqLMTh9Ke72
+  AWS_ST: FwoGZXIvYXdzEK///////////wEaDAnZzupnY5GPF/VKXiLIAeLIOnf9NjWPUhi1HS7yKXeLLSwvzql92kRzUiuTRKgbQYu0wUXJ1A2qhl9/TxFAWcjHr43Cje0a382Drfm3mOHKjwKzXwGbm79eDCEsJYr75Bvgzg7c3kFpPxm36woL00ysjv/Qkmt/o56bAS9NOHKhjoeu51ddoFtAT4NmM2vGmoEP8ghdDBVbZpFCS4CUTIioCyz4qyVngjJgL/Hexmg9jW/Ipi8r5k9rdYa6wdWYRvIijuKb7vh+DbXiLDpnkO5owQrkAdDuKJq+s6oGMi13eSPPrc0+1gMAYlUuJyPXzE70JUzcMi37HphtDTi7j1WBjpVSOaHZq8yQrX4=
   AWS_R: us-east-1
   AWS_U_ECR: 646838487189.dkr.ecr.us-east-1.amazonaws.com
 
